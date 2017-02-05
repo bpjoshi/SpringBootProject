@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Home Page</title>
+<title>About</title>
 </head>
 <body>
-<strong>Hello World from Jsp!</strong>
+<strong>Revolutionary Website Under Construction!</strong>
 </body>
 </html>

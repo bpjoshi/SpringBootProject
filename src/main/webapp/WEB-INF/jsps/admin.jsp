@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Home Page</title>
+<title>Admin Page</title>
 </head>
 <body>
-<strong>Hello World from Jsp!</strong>
+<strong>This is admin area</strong>
 </body>
 </html>
