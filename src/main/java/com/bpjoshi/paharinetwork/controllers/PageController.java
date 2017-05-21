@@ -18,6 +18,6 @@ public class PageController {
 	
 	@RequestMapping("/about")
     String about() {
-        return "about";
+        return "app.about";
     }
 }
