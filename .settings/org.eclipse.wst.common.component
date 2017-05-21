@@ -5,6 +5,6 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
         <property name="java-output-path" value="/PahariNetwork/target/classes"/>
-        <property name="context-root" value="onlineconnections"/>
+        <property name="context-root" value="paharinetwork"/>
     </wb-module>
 </project-modules>

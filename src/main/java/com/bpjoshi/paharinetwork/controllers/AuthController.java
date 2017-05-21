@@ -1,4 +1,4 @@
-package com.bpjoshi.onlineconnections.controllers;
+package com.bpjoshi.paharinetwork.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

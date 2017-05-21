@@ -1,11 +1,11 @@
 Manifest-Version: 1.0
-Implementation-Title: onlineconnections
+Implementation-Title: paharinetwork
 Implementation-Version: 0.0.1-SNAPSHOT
 Built-By: Josh
-Implementation-Vendor-Id: com.bpjoshi.onlineconnections
+Implementation-Vendor-Id: com.bpjoshi.paharinetwork
 Build-Jdk: 1.8.0_74
-Implementation-URL: http://projects.spring.io/spring-boot/onlineconnec
- tions/
+Implementation-URL: http://projects.spring.io/spring-boot/paharinetwor
+ k/
 Created-By: Maven Integration for Eclipse
 Implementation-Vendor: Pivotal Software, Inc.
 

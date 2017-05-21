@@ -1,4 +1,4 @@
-package com.bpjoshi.onlineconnections.controllers;
+package com.bpjoshi.paharinetwork.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,7 +12,8 @@ public class PageController {
 	
 	@RequestMapping("/")
     String home() {
-        return "home";
+		//changed to app.homepage from home to display from tiles
+        return "app.homepage";
     }
 	
 	@RequestMapping("/about")
