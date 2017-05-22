@@ -30,3 +30,8 @@
 	color:white;
 	font-weight:bold;
 }
+
+/*width of update status*/
+textarea{
+	width: 100%;
+}
