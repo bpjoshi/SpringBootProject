@@ -24,3 +24,9 @@
 	color: yellow;
 	font-weight: bold;
 }
+
+.panel>.panel-heading{
+	background-color: orange;
+	color:white;
+	font-weight:bold;
+}

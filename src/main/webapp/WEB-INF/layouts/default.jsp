@@ -39,15 +39,15 @@
             <li><a href="/about">About</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="../navbar/">Something later</a></li>
+            <li><a href="/addstatus">Add Status</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
-
+	<div class="container">
 	<tiles:insertAttribute name="content" />
-	
+	</div>
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
