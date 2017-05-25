@@ -10,7 +10,7 @@ import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
 import org.springframework.web.servlet.view.tiles3.TilesView;
 /**
  * 
- * @author bpjoshi(Bhagwati Prasad)
+ * @author Bhagwati Prasad(bpjoshi)
  *
  */
 @SpringBootApplication
