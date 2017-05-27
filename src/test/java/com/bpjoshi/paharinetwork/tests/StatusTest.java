@@ -11,8 +11,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
  * @author Bhagwati Prasad(bpjoshi)
  *
  */
-public class StatusTest 
-	@Test
+public class StatusTest {
 	public void statusTest(){
 		
 	}
