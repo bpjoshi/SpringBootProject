@@ -37,6 +37,11 @@ public class StatusUpdate {
 			statusDate= new Date();
 		}
 	}
+	
+	public StatusUpdate(){
+		
+	}
+	
 	public StatusUpdate(String statusText){
 		this.statusText=statusText;
 	}
