@@ -2,26 +2,45 @@ package com.bpjoshi.paharinetwork.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.PrePersist;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 /**
  * @author Bhagwati Prasad(bpjoshi)
  * Represents a Status Update
  */
+@Entity
+@Table(name="status_update")
 public class StatusUpdate {
+	@Id
+	@Column(name="status_id")
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long statusId;
+	@Column(name="status_text")
 	private String statusText;
+	@Column(name="status_date")
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date statusDate;
 	public Long getStatusId() {
 		return statusId;
 	}
-	
+	@PrePersist
+	protected void onStatusCreate(){
+		if(statusDate==null){
+			statusDate= new Date();
+		}
+	}
 	public StatusUpdate(String statusText){
 		this.statusText=statusText;
 	}
 	
-	/**
-	 * @param statusText
-	 * @param statusDate
-	 */
 	public StatusUpdate(String statusText, Date statusDate) {
 		super();
 		this.statusText = statusText;
