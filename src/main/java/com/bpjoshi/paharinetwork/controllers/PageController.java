@@ -1,10 +1,13 @@
 package com.bpjoshi.paharinetwork.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bpjoshi.paharinetwork.model.StatusUpdate;
+import com.bpjoshi.paharinetwork.service.StatusUpdateService;
 /**
  * 
  * @author Bhagwati Prasad(bpjoshi)
@@ -12,6 +15,8 @@ import com.bpjoshi.paharinetwork.model.StatusUpdate;
  */
 @Controller
 public class PageController {
+	@Autowired
+	private StatusUpdateService statusUpdateService;
 	
 	@RequestMapping("/")
     String home() {
@@ -24,10 +29,17 @@ public class PageController {
         return "app.about";
     }
 	
-	@RequestMapping("/addstatus")
+	@RequestMapping(value="/addstatus", method=RequestMethod.GET)
     ModelAndView addStatus(ModelAndView modelAndView) {
-		StatusUpdate statusUpdate=new StatusUpdate("Hello World!");
+		StatusUpdate statusUpdate=new StatusUpdate();
 		modelAndView.getModel().put("statusUpdate", statusUpdate);
+		modelAndView.setViewName("app.addStatus");
+        return modelAndView;
+    }
+	
+	@RequestMapping(value="/addstatus", method=RequestMethod.POST)
+    ModelAndView addStatus(ModelAndView modelAndView, StatusUpdate statusUpdate) {
+		statusUpdateService.saveStatusUpdate(statusUpdate);
 		modelAndView.setViewName("app.addStatus");
         return modelAndView;
     }
