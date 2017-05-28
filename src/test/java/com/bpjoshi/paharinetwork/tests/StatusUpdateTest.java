@@ -1,9 +1,13 @@
 package com.bpjoshi.paharinetwork.tests;
 
+import java.util.Calendar;
+
 import javax.transaction.Transactional;
 
 import org.junit.Test;
+
 import static org.junit.Assert.*;
+
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -34,5 +38,26 @@ public class StatusUpdateTest {
 		
 		StatusUpdate retrieved=statusUpdateDao.findOne(status.getStatusId());
 		assertEquals("Matching status update", status, retrieved);
+	}
+	
+	@Test
+	public void retrieveLastStatusUpdateTest(){
+Calendar calendar = Calendar.getInstance();
+		
+		StatusUpdate lastStatusUpdate = null;
+		
+		for(int i=0; i<3; i++) {
+			calendar.add(Calendar.DAY_OF_YEAR, 1);
+			
+			StatusUpdate status = new StatusUpdate("Status update " + i, calendar.getTime());
+			
+			statusUpdateDao.save(status);
+			
+			lastStatusUpdate = status;
+		}
+		
+		StatusUpdate retrieved = statusUpdateDao.findFirstByOrderByStatusDateDesc();
+		
+		assertEquals("Latest status update", lastStatusUpdate, retrieved);
 	}
 }

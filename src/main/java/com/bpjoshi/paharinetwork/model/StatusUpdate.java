@@ -105,6 +105,12 @@ public class StatusUpdate {
 			return false;
 		return true;
 	}
+	@Override
+	public String toString() {
+		return "StatusUpdate [statusId=" + statusId + ", statusText="
+				+ statusText + ", statusDate=" + statusDate + "]";
+	}
+	
 	
 	
 }
