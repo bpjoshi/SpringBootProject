@@ -33,6 +33,10 @@ public class PageController {
     ModelAndView addStatus(ModelAndView modelAndView) {
 		StatusUpdate statusUpdate=new StatusUpdate();
 		modelAndView.getModel().put("statusUpdate", statusUpdate);
+		
+		StatusUpdate latestStatusUpdate=statusUpdateService.getLatestStatusUpdate();
+		modelAndView.getModel().put("latestStatusUpdate", latestStatusUpdate);
+		
 		modelAndView.setViewName("app.addStatus");
         return modelAndView;
     }
@@ -40,6 +44,10 @@ public class PageController {
 	@RequestMapping(value="/addstatus", method=RequestMethod.POST)
     ModelAndView addStatus(ModelAndView modelAndView, StatusUpdate statusUpdate) {
 		statusUpdateService.saveStatusUpdate(statusUpdate);
+		
+		StatusUpdate latestStatusUpdate=statusUpdateService.getLatestStatusUpdate();
+		modelAndView.getModel().put("latestStatusUpdate", latestStatusUpdate);
+		
 		modelAndView.setViewName("app.addStatus");
         return modelAndView;
     }
