@@ -2,6 +2,7 @@ package com.bpjoshi.paharinetwork.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -30,9 +31,7 @@ public class PageController {
     }
 	
 	@RequestMapping(value="/addstatus", method=RequestMethod.GET)
-    ModelAndView addStatus(ModelAndView modelAndView) {
-		StatusUpdate statusUpdate=new StatusUpdate();
-		modelAndView.getModel().put("statusUpdate", statusUpdate);
+    ModelAndView addStatus(ModelAndView modelAndView, @ModelAttribute("statusUpdate") StatusUpdate statusUpdate) {
 		
 		StatusUpdate latestStatusUpdate=statusUpdateService.getLatestStatusUpdate();
 		modelAndView.getModel().put("latestStatusUpdate", latestStatusUpdate);
@@ -42,7 +41,7 @@ public class PageController {
     }
 	
 	@RequestMapping(value="/addstatus", method=RequestMethod.POST)
-    ModelAndView addStatus(ModelAndView modelAndView, StatusUpdate statusUpdate) {
+    ModelAndView addStatus(ModelAndView modelAndView, @ModelAttribute("statusUpdate") StatusUpdate statusUpdate, String temp) {
 		statusUpdateService.saveStatusUpdate(statusUpdate);
 		
 		StatusUpdate latestStatusUpdate=statusUpdateService.getLatestStatusUpdate();
