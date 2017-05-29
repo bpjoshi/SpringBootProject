@@ -11,6 +11,7 @@
 			</div>
 			<div class="panel-body">
 				<sForm:form modelAttribute="statusUpdate">
+					<div><sForm:errors path="statusText"></sForm:errors></div>
 					<div class="form-group">
 						<sForm:textarea path="statusText" name="statusText" rows="7" cols="50"></sForm:textarea>
 					</div>
