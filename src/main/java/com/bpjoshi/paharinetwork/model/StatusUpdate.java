@@ -11,6 +11,8 @@ import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 /**
  * @author Bhagwati Prasad(bpjoshi)
@@ -23,6 +25,8 @@ public class StatusUpdate {
 	@Column(name="status_id")
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long statusId;
+	@NotNull
+	@Size(min=10, max=250)
 	@Column(name="status_text")
 	private String statusText;
 	@Column(name="status_date")
