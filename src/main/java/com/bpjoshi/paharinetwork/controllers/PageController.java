@@ -8,6 +8,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bpjoshi.paharinetwork.model.StatusUpdate;
@@ -61,9 +62,11 @@ public class PageController {
 		
         return modelAndView;
     }
+	
 	@RequestMapping(value="/viewstatus", method=RequestMethod.GET)
-	ModelAndView viewStatus(ModelAndView modelAndView){
+	ModelAndView viewStatus(ModelAndView modelAndView, @RequestParam(name="p", defaultValue="1") int pageNumber){
 		//Set view to view status page
+		System.out.println("\n\n page number is: "+pageNumber+"\n\n");
 		modelAndView.setViewName("app.viewStatus");
 		return modelAndView;
 	}
