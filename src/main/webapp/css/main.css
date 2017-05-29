@@ -35,3 +35,7 @@
 textarea{
 	width: 100%;
 }
+
+.errorMessages{
+	color:red;
+}
