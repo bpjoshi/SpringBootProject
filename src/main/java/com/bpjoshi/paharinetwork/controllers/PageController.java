@@ -61,4 +61,10 @@ public class PageController {
 		
         return modelAndView;
     }
+	@RequestMapping(value="/viewstatus", method=RequestMethod.GET)
+	ModelAndView viewStatus(ModelAndView modelAndView){
+		//Set view to view status page
+		modelAndView.setViewName("app.viewStatus");
+		return modelAndView;
+	}
 }
