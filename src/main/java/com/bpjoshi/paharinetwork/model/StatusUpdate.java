@@ -26,7 +26,7 @@ public class StatusUpdate {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long statusId;
 	//Validation Message will be loaded from ValidationMessages.properties by spring
-	@Size(min=50, max=250, message="{addStatus.statusText.sizeMessage}")
+	@Size(min=10, max=250, message="{addStatus.statusText.sizeMessage}")
 	@Column(name="status_text")
 	private String statusText;
 	@Column(name="status_date")

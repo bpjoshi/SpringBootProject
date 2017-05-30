@@ -20,6 +20,7 @@ import com.bpjoshi.paharinetwork.model.StatusUpdate;
 public class StatusUpdateService {
 	@Autowired
 	private StatusUpdateDao statusUpdateDao;
+	//PAGESIZE defines number of status per page
 	private final static int PAGESIZE=3;
 	public void saveStatusUpdate(StatusUpdate statusUpdate){
 		statusUpdateDao.save(statusUpdate);

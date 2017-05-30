@@ -3,6 +3,7 @@ package com.bpjoshi.paharinetwork.controllers;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -66,8 +67,9 @@ public class PageController {
 	@RequestMapping(value="/viewstatus", method=RequestMethod.GET)
 	ModelAndView viewStatus(ModelAndView modelAndView, @RequestParam(name="p", defaultValue="1") int pageNumber){
 		//Set view to view status page
-		System.out.println("\n\n page number is: "+pageNumber+"\n\n");
 		modelAndView.setViewName("app.viewStatus");
+		Page<StatusUpdate> page=statusUpdateService.getPage(pageNumber);
+		modelAndView.getModel().put("page", page);
 		return modelAndView;
 	}
 }
