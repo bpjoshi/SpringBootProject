@@ -39,3 +39,6 @@ textarea{
 .errorMessages{
 	color:red;
 }
+.pagination{
+	margin-top: 30px;
+}
