@@ -42,3 +42,9 @@ textarea{
 .pagination{
 	margin-top: 40px;;
 }
+
+.homepage-status{
+	text-align: center;
+	margin-top: 30px;
+	font-size: larger;
+}
