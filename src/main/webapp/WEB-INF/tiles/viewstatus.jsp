@@ -22,6 +22,6 @@
 			</div>
 		</c:forEach>
 				<!-- Call the custom pagination tag -->
-			<jwp:pagination page="${page}" url="${url }" />
+			<jwp:pagination page="${page}" url="${url }" size="${4}" />
 	</div>
 </div>
