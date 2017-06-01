@@ -7,9 +7,11 @@
 	<div class="col-md-8 col-md-offset-2">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<div class="panel-title">Update Your Status</div>
+				<div class="panel-title">Edit Status</div>
 			</div>
 				<sForm:form modelAttribute="statusUpdate">
+					<sForm:input type="hidden" path="statusId" />
+					<sForm:input type="hidden" path="statusDate" />
 					<div class="errorMessages">
 						<sForm:errors path="statusText"></sForm:errors>
 					</div>
@@ -17,7 +19,7 @@
 						<sForm:textarea path="statusText" name="statusText" rows="7"
 							cols="50"></sForm:textarea>
 					</div>
-					<input type="submit" name="submit" value="Update Status" />
+					<input type="submit" name="submit" value="Save" />
 				</sForm:form>
 		</div>
 		

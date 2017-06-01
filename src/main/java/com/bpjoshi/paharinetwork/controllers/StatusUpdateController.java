@@ -76,4 +76,14 @@ public class StatusUpdateController {
 		modelAndView.setViewName("app.editStatus");
 		return modelAndView;
 	}
+	
+	@RequestMapping(value="/editstatus", method=RequestMethod.POST)
+	ModelAndView editStatus(ModelAndView modelAndView, @Valid StatusUpdate statusUpdate, BindingResult result){
+		modelAndView.setViewName("app.editStatus");
+		if(!result.hasErrors()){
+			statusUpdateService.saveStatusUpdate(statusUpdate);
+			modelAndView.setViewName("redirect:/viewstatus");
+		}
+		return modelAndView;
+	}
 }

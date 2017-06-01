@@ -14,6 +14,8 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 /**
  * @author Bhagwati Prasad(bpjoshi)
  * Represents a Status Update
@@ -31,6 +33,8 @@ public class StatusUpdate {
 	private String statusText;
 	@Column(name="status_date")
 	@Temporal(TemporalType.TIMESTAMP)
+	//below annotation to map string type date passed
+	@DateTimeFormat(pattern="yyyy/MM/dd hh:mm:ss")
 	private Date statusDate;
 	public Long getStatusId() {
 		return statusId;
