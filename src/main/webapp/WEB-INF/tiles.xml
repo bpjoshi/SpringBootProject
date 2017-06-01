@@ -18,4 +18,7 @@
   <definition name="app.viewStatus" extends="app.default">
     <put-attribute name="content" value="/WEB-INF/tiles/viewstatus.jsp" />
   </definition>
+  <definition name="app.editStatus" extends="app.default">
+    <put-attribute name="content" value="/WEB-INF/tiles/editstatus.jsp" />
+  </definition>
 </tiles-definitions>

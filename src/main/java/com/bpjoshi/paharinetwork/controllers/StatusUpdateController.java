@@ -68,4 +68,12 @@ public class StatusUpdateController {
 		statusUpdateService.deleteStatus(statusId);
 		return modelAndView;
 	}
+	
+	@RequestMapping(value="/editstatus", method=RequestMethod.GET)
+	ModelAndView editStatus(ModelAndView modelAndView, @RequestParam(name="id") Long statusId){
+		StatusUpdate statusUpdate=statusUpdateService.getStatusUpdate(statusId);
+		modelAndView.getModel().put("statusUpdate", statusUpdate);
+		modelAndView.setViewName("app.editStatus");
+		return modelAndView;
+	}
 }

@@ -46,4 +46,12 @@ public class StatusUpdateService {
 		statusUpdateDao.delete(statusId);
 	}
 
+	/**
+	 * @param statusId
+	 * @return
+	 */
+	public StatusUpdate getStatusUpdate(Long statusId) {
+			return statusUpdateDao.findOne(statusId);
+	}
+
 }
