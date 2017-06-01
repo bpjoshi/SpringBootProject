@@ -62,4 +62,10 @@ public class StatusUpdateController {
 		modelAndView.getModel().put("page", page);
 		return modelAndView;
 	}
+	@RequestMapping(value="/deletestatus", method=RequestMethod.GET)
+	ModelAndView deleteStatus(ModelAndView modelAndView, @RequestParam(name="id") Long statusId){
+		modelAndView.setViewName("redirect:/viewstatus");
+		statusUpdateService.deleteStatus(statusId);
+		return modelAndView;
+	}
 }

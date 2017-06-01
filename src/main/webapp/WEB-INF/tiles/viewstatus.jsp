@@ -24,7 +24,7 @@
 					${statusUpdate.statusText}"
 					</div>
 					<div class="edit-links pull-right">
-						<a href="${editLink }">Edit</a>|<a href="${deleteLink}">Delete</a>
+						<a href="${editLink }">Edit</a>|<a onclick="return confirm('Do you really want to delete this status?')" href="${deleteLink}">Delete</a>
 					</div>
 				</div>
 			</div>

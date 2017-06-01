@@ -39,4 +39,11 @@ public class StatusUpdateService {
 		return statusUpdateDao.findAll(pageRequest);
 	}
 
+	/**
+	 * @param statusId
+	 */
+	public void deleteStatus(Long statusId) {
+		statusUpdateDao.delete(statusId);
+	}
+
 }
