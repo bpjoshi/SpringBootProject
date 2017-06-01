@@ -8,6 +8,8 @@
 	<div class="col-md-8 col-md-offset-2">
 		<!-- Loop to print out statuses -->
 		<c:forEach var="statusUpdate" items="${page.content}">
+			<c:url var="editLink" value="/editstatus?id=${statusUpdate.statusId}"></c:url>
+			<c:url var="deleteLink" value="/deletestatus?id=${statusUpdate.statusId}"></c:url>
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<div class="panel-title">
@@ -17,7 +19,13 @@
 					</div>
 				</div>
 				<div class="panel-body">
-					<c:out value="${statusUpdate.statusText}" />
+					<div>
+					<!-- removed c:out to wysiwyg type presentation -->
+					${statusUpdate.statusText}"
+					</div>
+					<div class="edit-links pull-right">
+						<a href="${editLink }">Edit</a>|<a href="${deleteLink}">Delete</a>
+					</div>
 				</div>
 			</div>
 		</c:forEach>
