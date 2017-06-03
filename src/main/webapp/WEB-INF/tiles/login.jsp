@@ -12,6 +12,7 @@
 			</div>
 			<div class="panel-body">
 				<form method="post" class="form-login" action="${loginUrl}">
+					<input type="hidden"  name="${_csrf.parameterName }" value="${_csrf.token}"/>
 					<div class="input-group">
 					<input type="text" name="username" placeholder="Username" class="form-control" />
 					</div>
