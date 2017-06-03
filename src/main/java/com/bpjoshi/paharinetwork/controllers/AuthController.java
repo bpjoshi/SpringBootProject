@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class AuthController {
 	
-	@RequestMapping("/admin")
-    String about() {
-        return "admin";
+	@RequestMapping("/login")
+    String adminPage() {
+        return "app.login";
     }
 
 }
