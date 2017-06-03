@@ -11,7 +11,7 @@
 				<div class="panel-title">Login Here</div>
 			</div>
 			<div class="panel-body">
-				<form method="post" action="${loginUrl}">
+				<form method="post" class="form-login" action="${loginUrl}">
 					<div class="input-group">
 					<input type="text" name="username" placeholder="Username" class="form-control" />
 					</div>
@@ -19,7 +19,7 @@
 					<input type="password" name="password" placeholder="Password"class="form-control"  />
 					</div>
 					<div class="input-group">
-					<button type="submit" class="btn-primary pull-center">Sign In</button>
+					<button type="submit" class="btn-primary pull-right">Sign In</button>
 					</div>
 				</form>
 			</div>
