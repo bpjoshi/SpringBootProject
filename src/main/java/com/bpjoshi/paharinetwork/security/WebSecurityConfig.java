@@ -15,7 +15,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/**").permitAll();
+		//@formatter:off
+		//The code right below, won't allow any css files to be visible
+		//http.authorizeRequests().antMatchers("/").permitAll().anyRequest().authenticated();
+		//Allow css etc at home page
+		http.authorizeRequests().antMatchers("/").permitAll().antMatchers("/js/*", "/css/*", "/img/*").permitAll()
+		.anyRequest().authenticated();
+		//@formatter:on
 	}
 
 }
