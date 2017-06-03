@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -46,11 +47,18 @@
                 <li><a href="/viewstatus">View Status</a></li>
               </ul>
             </li>
+            <%-- jquery call to logout form defined --%>
+            <li><a href="javascript:$('#logoutForm').submit();">Logout</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
-
+	<%--Adding logout link --%>
+	<c:url var="logoutLink" value="/logout" />
+	<form id="logoutForm" method="post" action="${logoutLink}">
+		<!-- it needs csrf token to logout -->
+		<input type="hidden"  name="${_csrf.parameterName }" value="${_csrf.token}"/>
+	</form>
 	<div class="container">
 	<tiles:insertAttribute name="content" />
 	</div>
