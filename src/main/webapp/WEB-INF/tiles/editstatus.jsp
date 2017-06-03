@@ -27,9 +27,10 @@
 </div>
 
 <!-- What you get is what you see java script editor -->
-<script src='/css/jquery.tinymce.min.js'></script>
+<script src='//cdn.tinymce.com/4/tinymce.min.js'></script>
 <script>
 	tinymce.init({
-		selector: "textarea"
+		selector: 'textarea',
+		plugins: "link"
 	});
 </script>
