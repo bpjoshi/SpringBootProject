@@ -2,6 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -40,6 +41,7 @@
             <li><a href="/about">About</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
+          	<sec:authorize access="isAuthenticated()">
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Status Corner <span class="caret"></span></a>
               <ul class="dropdown-menu">
@@ -49,6 +51,10 @@
             </li>
             <%-- jquery call to logout form defined --%>
             <li><a href="javascript:$('#logoutForm').submit();">Logout</a></li>
+            </sec:authorize>
+            <sec:authorize access="!isAuthenticated()">
+            <li><a href="/login">Log in</a></li>
+            </sec:authorize>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
