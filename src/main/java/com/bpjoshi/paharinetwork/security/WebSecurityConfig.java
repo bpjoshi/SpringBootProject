@@ -25,7 +25,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		//The code right below, won't allow any css files to be visible
 		//http.authorizeRequests().antMatchers("/").permitAll().anyRequest().authenticated();
 		//Allow css etc at home page
-		http.authorizeRequests().antMatchers("/", "/about").permitAll().antMatchers("/js/*", "/css/*", "/img/*")
+		http.authorizeRequests().antMatchers("/", "/about", "/register").permitAll().antMatchers("/js/*", "/css/*", "/img/*")
 		.permitAll().anyRequest().authenticated().and().formLogin().loginPage("/login")
 		.defaultSuccessUrl("/").permitAll();
 		//@formatter:on
