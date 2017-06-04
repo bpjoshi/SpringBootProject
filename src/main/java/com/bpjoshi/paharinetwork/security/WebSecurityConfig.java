@@ -6,6 +6,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.bpjoshi.paharinetwork.service.EndUserService;
 
@@ -18,6 +19,8 @@ import com.bpjoshi.paharinetwork.service.EndUserService;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	@Autowired
 	private EndUserService endUserService;
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -34,7 +37,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		//@formatter:off
-			auth.userDetailsService(endUserService);
+			auth.userDetailsService(endUserService).passwordEncoder(passwordEncoder);
 		//@formatter:on
 	}
 	

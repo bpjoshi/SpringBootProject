@@ -21,7 +21,7 @@ public class EndUser {
 private Long userId;
 @Column(name="user_email", unique=true)
 private String userEmail;
-@Column(name="user_password")
+@Column(name="user_password", length=60)
 private String userPassword;
 public Long getUserId() {
 	return userId;

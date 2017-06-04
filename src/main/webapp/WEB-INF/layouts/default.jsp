@@ -54,6 +54,7 @@
             </sec:authorize>
             <sec:authorize access="!isAuthenticated()">
             <li><a href="/login">Log in</a></li>
+            <li><a href="/register">Register</a></li>
             </sec:authorize>
           </ul>
         </div><!--/.nav-collapse -->
