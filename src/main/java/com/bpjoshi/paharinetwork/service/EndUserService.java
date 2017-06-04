@@ -28,6 +28,7 @@ public class EndUserService implements UserDetailsService {
 	//Register a new end user in database
 	public void registerEndUser(EndUser endUser){
 		//Encode the password before registering the user in the database
+		endUser.setUserRole("ROLE_USER");
 		endUser.setUserPassword(passwordEncoder.encode(endUser.getUserPassword()));
 		endUserDao.save(endUser);
 	}
@@ -37,7 +38,7 @@ public class EndUserService implements UserDetailsService {
 		if(endUser==null){
 			return null;
 		}
-		List<GrantedAuthority> authorityList=AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_USER");
+		List<GrantedAuthority> authorityList=AuthorityUtils.commaSeparatedStringToAuthorityList(endUser.getUserRole());
 		String userPassword=endUser.getUserPassword();
 		return new User(userEmail, userPassword, authorityList);
 	}

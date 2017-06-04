@@ -41,7 +41,8 @@
             <li><a href="/about">About</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-          	<sec:authorize access="isAuthenticated()">
+          	<sec:authorize access="hasRole('ROLE_ADMIN')">
+          	<%--Admin Zone --%>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Status Corner <span class="caret"></span></a>
               <ul class="dropdown-menu">
@@ -49,6 +50,8 @@
                 <li><a href="/viewstatus">View Status</a></li>
               </ul>
             </li>
+            </sec:authorize>
+            <sec:authorize access="isAuthenticated()">
             <%-- jquery call to logout form defined --%>
             <li><a href="javascript:$('#logoutForm').submit();">Logout</a></li>
             </sec:authorize>
