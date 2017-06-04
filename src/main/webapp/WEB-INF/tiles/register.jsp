@@ -6,6 +6,14 @@
 <c:url var="loginUrl" value="/login" />
 <div class="row">
 	<div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+		<%--Error messages zone --%>
+		<div class="errorMessages">
+			<sForm:errors path="userEmail"></sForm:errors>
+		</div>
+		<div class="errorMessages">
+			<sForm:errors path="userPassword"></sForm:errors>
+		</div>
+		<%--Error messages zone finished --%>
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<div class="panel-title">User Registration Form</div>

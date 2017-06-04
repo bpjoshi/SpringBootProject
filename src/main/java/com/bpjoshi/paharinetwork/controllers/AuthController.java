@@ -1,11 +1,16 @@
 package com.bpjoshi.paharinetwork.controllers;
 
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bpjoshi.paharinetwork.model.EndUser;
+import com.bpjoshi.paharinetwork.service.EndUserService;
 /**
  * 
  * @author Bhagwati Prasad(bpjoshi)
@@ -13,7 +18,8 @@ import com.bpjoshi.paharinetwork.model.EndUser;
  */
 @Controller
 public class AuthController {
-	
+	@Autowired
+	private EndUserService endUserService;
 	@RequestMapping("/login")
     String adminPage() {
         return "app.login";
@@ -25,6 +31,16 @@ public class AuthController {
 		modelAndView.getModel().put("endUser", endUser);
 		//"endUser" should be same as modelAttribute in form page
 		modelAndView.setViewName("app.register");
+		return modelAndView;
+    }
+	
+	@RequestMapping(value="/register", method=RequestMethod.POST)
+    ModelAndView register(ModelAndView modelAndView, @Valid EndUser endUser, BindingResult result) {
+		modelAndView.setViewName("app.register");
+		if(!result.hasErrors()){
+			endUserService.registerEndUser(endUser);
+			modelAndView.setViewName("redirect:/");
+		}
 		return modelAndView;
     }
 
