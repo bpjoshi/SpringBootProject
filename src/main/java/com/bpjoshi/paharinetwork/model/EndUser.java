@@ -11,6 +11,8 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 
 /**
@@ -28,13 +30,17 @@ private Long userId;
 @NotBlank(message="{register.email.invalid}")
 @Column(name="user_email", unique=true)
 private String userEmail;
+@Size(min=5, max=15, message="{register.password.invalid}")
 @Transient
-@Size(min=5, max=15, message="{register.password.sizeMessage}")
 private String plainPassword;
 @Column(name="user_password", length=60)
 private String userPassword;
 @Column(name="user_role", length=20)
 private String userRole;
+@Autowired
+@Transient
+private PasswordEncoder passwordEncoder;
+
 public String getUserRole() {
 	return userRole;
 }
@@ -67,6 +73,7 @@ public String getPlainPassword() {
 }
 public void setPlainPassword(String plainPassword) {
 	this.plainPassword = plainPassword;
+	this.setUserPassword(passwordEncoder.encode(plainPassword));
 }
 @Override
 public int hashCode() {

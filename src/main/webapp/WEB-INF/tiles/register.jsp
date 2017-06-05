@@ -21,7 +21,7 @@
 					<sForm:input type="text" path="userEmail" placeholder="Email" class="form-control" />
 					</div>
 					<div class="input-group">
-					<sForm:input type="password" path="userPassword" placeholder="Password" class="form-control"  />
+					<sForm:input type="password" path="plainPassword" placeholder="Password" class="form-control"  />
 					</div>
 					<div class="input-group">
 					<input type="password" name="repeatPassword" placeholder="Repeat Password" class="form-control"  />

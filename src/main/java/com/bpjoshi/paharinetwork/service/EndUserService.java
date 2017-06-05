@@ -27,9 +27,10 @@ public class EndUserService implements UserDetailsService {
 	private PasswordEncoder passwordEncoder;
 	//Register a new end user in database
 	public void registerEndUser(EndUser endUser){
-		//Encode the password before registering the user in the database
+		
 		endUser.setUserRole("ROLE_USER");
-		endUser.setUserPassword(passwordEncoder.encode(endUser.getUserPassword()));
+		//Encode the password before registering the user in the database, now being done in EndUser Class
+		//endUser.setUserPassword(passwordEncoder.encode(endUser.getUserPassword()));
 		endUserDao.save(endUser);
 	}
 	
