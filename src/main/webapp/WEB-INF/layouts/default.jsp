@@ -12,9 +12,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- serving title value from tiles.xml -->
 <title><tiles:insertAttribute name="title" /></title>
+<c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <!-- Bootstrap -->
-<link href="/css/bootstrap.min.css" rel="stylesheet">
-<link href="/css/main.css" rel="stylesheet">
+<link href="${contextRoot}/css/bootstrap.min.css" rel="stylesheet">
+<link href="${contextRoot}/css/main.css" rel="stylesheet">
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -33,12 +34,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/">Pahari Network</a>
+          <a class="navbar-brand" href="${contextRoot}/">Pahari Network</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="/">Home</a></li>
-            <li><a href="/about">About</a></li>
+            <li class="active"><a href="${contextRoot}/">Home</a></li>
+            <li><a href="${contextRoot}/about">About</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
           	<sec:authorize access="hasRole('ROLE_ADMIN')">
@@ -46,8 +47,8 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Status Corner <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="/addstatus">Add Status</a></li>
-                <li><a href="/viewstatus">View Status</a></li>
+                <li><a href="${contextRoot}/addstatus">Add Status</a></li>
+                <li><a href="${contextRoot}/viewstatus">View Status</a></li>
               </ul>
             </li>
             </sec:authorize>
@@ -56,15 +57,15 @@
             <li><a href="javascript:$('#logoutForm').submit();">Logout</a></li>
             </sec:authorize>
             <sec:authorize access="!isAuthenticated()">
-            <li><a href="/login">Log in</a></li>
-            <li><a href="/register">Register</a></li>
+            <li><a href="${contextRoot}/login">Log in</a></li>
+            <li><a href="${contextRoot}/register">Register</a></li>
             </sec:authorize>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 	<%--Adding logout link --%>
-	<c:url var="logoutLink" value="/logout" />
+	<c:url var="logoutLink" value="${contextRoot}/logout" />
 	<form id="logoutForm" method="post" action="${logoutLink}">
 		<!-- it needs csrf token to logout -->
 		<input type="hidden"  name="${_csrf.parameterName }" value="${_csrf.token}"/>
