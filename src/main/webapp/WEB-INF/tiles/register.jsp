@@ -8,10 +8,7 @@
 	<div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
 		<%--Error messages zone --%>
 		<div class="errorMessages">
-			<sForm:errors path="userEmail"></sForm:errors>
-		</div>
-		<div class="errorMessages">
-			<sForm:errors path="userPassword"></sForm:errors>
+			<sForm:errors path="endUser.*"></sForm:errors>
 		</div>
 		<%--Error messages zone finished --%>
 		<div class="panel panel-default">

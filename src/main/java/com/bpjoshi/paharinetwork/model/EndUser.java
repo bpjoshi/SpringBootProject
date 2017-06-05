@@ -6,6 +6,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
 
 
 /**
@@ -19,8 +24,13 @@ public class EndUser {
 @GeneratedValue(strategy=GenerationType.AUTO)
 @Column(name="user_id")
 private Long userId;
+@Email(message="{register.email.invalid}")
+@NotBlank(message="{register.email.invalid}")
 @Column(name="user_email", unique=true)
 private String userEmail;
+@Transient
+@Size(min=5, max=15, message="{register.password.sizeMessage}")
+private String plainPassword;
 @Column(name="user_password", length=60)
 private String userPassword;
 @Column(name="user_role", length=20)
@@ -48,6 +58,15 @@ public String getUserPassword() {
 }
 public void setUserPassword(String userPassword) {
 	this.userPassword = userPassword;
+}
+
+
+
+public String getPlainPassword() {
+	return plainPassword;
+}
+public void setPlainPassword(String plainPassword) {
+	this.plainPassword = plainPassword;
 }
 @Override
 public int hashCode() {
