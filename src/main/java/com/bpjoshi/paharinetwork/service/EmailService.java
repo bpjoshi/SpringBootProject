@@ -32,7 +32,7 @@ public class EmailService {
 		}
 	}
 	
-	private void sendVerificationEmail(String emailAddress){
+	public void sendVerificationEmail(String emailAddress){
 		MimeMessagePreparator mimeMessagePreparator=new MimeMessagePreparator(){
 
 			@Override
