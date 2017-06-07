@@ -5,26 +5,31 @@ package com.bpjoshi.paharinetwork.validations;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
-
 import com.bpjoshi.paharinetwork.model.EndUser;
-
 /**
  * @author Bhagwati Prasad(bpjoshi)
  *
  */
 public class PasswordMatchValidator implements ConstraintValidator<PasswordMatcher, EndUser> {
-	public void initialize(PasswordMatcher arg0) {
-		
+	@Override
+	public void initialize(PasswordMatcher p) {
 		
 	}
-	public boolean isValid(EndUser endUser, ConstraintValidatorContext cVC) {
-		if(endUser.getPlainPassword()==null || endUser.getPlainPassword().length()==0){
+
+	@Override
+	public boolean isValid(EndUser endUser, ConstraintValidatorContext c) {
+		
+		String plainPassword = endUser.getPlainPassword();
+		String repeatPassword = endUser.getRepeatPassword();
+		
+		if(plainPassword == null || plainPassword.length() == 0) {
 			return true;
-			//treating this case like it's not a registration case
 		}
-		if(endUser==null ||(endUser.getPlainPassword().equalsIgnoreCase(endUser.getRepeatPassword()))){
+		
+		if(plainPassword == null || !plainPassword.equals(repeatPassword)) {
 			return false;
 		}
+			
 		return true;
 	}
 
