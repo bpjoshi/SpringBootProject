@@ -33,6 +33,8 @@ private String userEmail;
 @Size(min=5, max=15, message="{register.password.invalid}")
 @Transient
 private String plainPassword;
+@Transient
+private String repeatePassword;
 @Column(name="user_password", length=60)
 private String userPassword;
 @Column(name="user_role", length=20)
@@ -66,8 +68,6 @@ public void setUserPassword(String userPassword) {
 	this.userPassword = userPassword;
 }
 
-
-
 public String getPlainPassword() {
 	return plainPassword;
 }
@@ -75,52 +75,17 @@ public void setPlainPassword(String plainPassword) {
 	this.plainPassword = plainPassword;
 	this.setUserPassword(passwordEncoder.encode(plainPassword));
 }
-@Override
-public int hashCode() {
-	final int prime = 31;
-	int result = 1;
-	result = prime * result + ((userEmail == null) ? 0 : userEmail.hashCode());
-	result = prime * result + ((userId == null) ? 0 : userId.hashCode());
-	result = prime * result
-			+ ((userPassword == null) ? 0 : userPassword.hashCode());
-	result = prime * result + ((userRole == null) ? 0 : userRole.hashCode());
-	return result;
+public String getRepeatePassword() {
+	return repeatePassword;
 }
-@Override
-public boolean equals(Object obj) {
-	if (this == obj)
-		return true;
-	if (obj == null)
-		return false;
-	if (getClass() != obj.getClass())
-		return false;
-	EndUser other = (EndUser) obj;
-	if (userEmail == null) {
-		if (other.userEmail != null)
-			return false;
-	} else if (!userEmail.equals(other.userEmail))
-		return false;
-	if (userId == null) {
-		if (other.userId != null)
-			return false;
-	} else if (!userId.equals(other.userId))
-		return false;
-	if (userPassword == null) {
-		if (other.userPassword != null)
-			return false;
-	} else if (!userPassword.equals(other.userPassword))
-		return false;
-	if (userRole == null) {
-		if (other.userRole != null)
-			return false;
-	} else if (!userRole.equals(other.userRole))
-		return false;
-	return true;
+public void setRepeatePassword(String repeatePassword) {
+	this.repeatePassword = repeatePassword;
 }
-@Override
-public String toString() {
-	return "EndUser [userId=" + userId + ", userEmail=" + userEmail
-			+ ", userPassword=" + userPassword + ", userRole=" + userRole + "]";
+public PasswordEncoder getPasswordEncoder() {
+	return passwordEncoder;
+}
+public void setPasswordEncoder(PasswordEncoder passwordEncoder) {
+	this.passwordEncoder = passwordEncoder;
 }
 
 
