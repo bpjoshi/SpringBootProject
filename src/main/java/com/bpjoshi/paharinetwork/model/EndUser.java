@@ -14,6 +14,8 @@ import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import com.bpjoshi.paharinetwork.validations.PasswordMatcher;
+
 
 /**
  * @author Bhagwati Prasad(bpjoshi)
@@ -21,6 +23,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
  */
 @Entity
 @Table(name="end_user")
+@PasswordMatcher(message="{register.password.mismatch}")
 public class EndUser {
 @Id
 @GeneratedValue(strategy=GenerationType.AUTO)
@@ -34,7 +37,7 @@ private String userEmail;
 @Transient
 private String plainPassword;
 @Transient
-private String repeatePassword;
+private String repeatPassword;
 @Column(name="user_password", length=60)
 private String userPassword;
 @Column(name="user_role", length=20)
@@ -75,11 +78,11 @@ public void setPlainPassword(String plainPassword) {
 	this.plainPassword = plainPassword;
 	this.setUserPassword(passwordEncoder.encode(plainPassword));
 }
-public String getRepeatePassword() {
-	return repeatePassword;
+public String getRepeatPassword() {
+	return repeatPassword;
 }
-public void setRepeatePassword(String repeatePassword) {
-	this.repeatePassword = repeatePassword;
+public void setRepeatPassword(String repeatPassword) {
+	this.repeatPassword = repeatPassword;
 }
 public PasswordEncoder getPasswordEncoder() {
 	return passwordEncoder;

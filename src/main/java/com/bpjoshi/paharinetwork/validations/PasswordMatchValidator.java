@@ -17,9 +17,15 @@ public class PasswordMatchValidator implements ConstraintValidator<PasswordMatch
 		
 		
 	}
-	public boolean isValid(EndUser arg0, ConstraintValidatorContext arg1) {
-		
-		return false;
+	public boolean isValid(EndUser endUser, ConstraintValidatorContext cVC) {
+		if(endUser.getPlainPassword()==null || endUser.getPlainPassword().length()==0){
+			return true;
+			//treating this case like it's not a registration case
+		}
+		if(endUser==null ||(endUser.getPlainPassword().equalsIgnoreCase(endUser.getRepeatPassword()))){
+			return false;
+		}
+		return true;
 	}
 
 }
