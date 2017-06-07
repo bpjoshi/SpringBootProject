@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bpjoshi.paharinetwork.model.EndUser;
+import com.bpjoshi.paharinetwork.service.EmailService;
 import com.bpjoshi.paharinetwork.service.EndUserService;
 /**
  * 
@@ -20,6 +21,8 @@ import com.bpjoshi.paharinetwork.service.EndUserService;
 public class AuthController {
 	@Autowired
 	private EndUserService endUserService;
+	@Autowired
+	private EmailService emailService;
 	@RequestMapping("/login")
     String adminPage() {
         return "app.login";
@@ -39,6 +42,7 @@ public class AuthController {
 		modelAndView.setViewName("app.register");
 		if(!result.hasErrors()){
 			endUserService.registerEndUser(endUser);
+			emailService.sendVerificationEmail(endUser.getUserEmail());
 			modelAndView.setViewName("redirect:/");
 		}
 		return modelAndView;
