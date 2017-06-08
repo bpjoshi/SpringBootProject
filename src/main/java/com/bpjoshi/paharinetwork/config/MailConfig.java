@@ -3,12 +3,17 @@
  */
 package com.bpjoshi.paharinetwork.config;
 
+import java.io.IOException;
+import java.util.Properties;
+
+import org.apache.velocity.app.VelocityEngine;
+import org.apache.velocity.exception.VelocityException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
-import org.springframework.stereotype.Component;
+import org.springframework.ui.velocity.VelocityEngineFactory;
 
 /**
  * @author Bhagwati Prasad(bpjoshi)
@@ -16,13 +21,7 @@ import org.springframework.stereotype.Component;
  */
 @Configuration
 public class MailConfig {
-	/*
-	 * mail.enable=true
-mail.smtp.host=smtp.mailtrap.io
-mail.smtp.port=2525
-mail.smtp.user=3ef22b84ece492
-mail.smtp.pass=24117e92dcc825
-	 */
+	
 	@Value("${mail.smtp.host}")
 	private String host;
 	@Value("${mail.smtp.port}")
@@ -40,5 +39,18 @@ mail.smtp.pass=24117e92dcc825
 		((JavaMailSenderImpl) javaMailSender).setPassword(password);
 		return javaMailSender;
 	}
+	/*
+	 * Added to get Velocity Engine Bean in MailService.java
+	 */
+	@SuppressWarnings("deprecation")
+	@Bean
+    public VelocityEngine getVelocityEngine() throws VelocityException, IOException{
+        VelocityEngineFactory factory = new VelocityEngineFactory();
+        Properties props = new Properties();
+        props.put("resource.loader", "class");
+        props.put("class.resource.loader.class", "org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader");
+        factory.setVelocityProperties(props);
+        return factory.createVelocityEngine();      
+    }
 
 }
