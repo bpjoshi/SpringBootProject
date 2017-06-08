@@ -27,4 +27,7 @@
   <definition name="app.register" extends="app.default">
     <put-attribute name="content" value="/WEB-INF/tiles/register.jsp" />
   </definition>
+  <definition name="app.verifyEmail" extends="app.default">
+    <put-attribute name="content" value="/WEB-INF/tiles/register.jsp" />
+  </definition>
 </tiles-definitions>
