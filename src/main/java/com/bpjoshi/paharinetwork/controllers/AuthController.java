@@ -49,8 +49,8 @@ public class AuthController {
     }
 	
 	@RequestMapping("/verifyemail")
-    String verifyEmail() {
-        return "app.verifyEmail";
-    }
+	String verifyEmail() {
+		return "app.verifyEmail";
+	}
 
 }
