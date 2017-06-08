@@ -4,6 +4,7 @@
 package com.bpjoshi.paharinetwork.config;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 
@@ -27,14 +28,14 @@ mail.smtp.pass=24117e92dcc825
 	private String username;
 	@Value("${mail.smtp.pass}")
 	private String password;
-	
+	@Bean //Added Bean annotation in the class so that it's bean can be autowired.
 	public JavaMailSender mailSender(){
-		JavaMailSenderImpl jMSI=new JavaMailSenderImpl();
-		jMSI.setHost(host);
-		jMSI.setPort(port);
-		jMSI.setUsername(username);
-		jMSI.setPassword(password);
-		return jMSI;
+		JavaMailSender javaMailSender=new JavaMailSenderImpl();
+		((JavaMailSenderImpl) javaMailSender).setHost(host);
+		((JavaMailSenderImpl) javaMailSender).setPort(port);
+		((JavaMailSenderImpl) javaMailSender).setUsername(username);
+		((JavaMailSenderImpl) javaMailSender).setPassword(password);
+		return javaMailSender;
 	}
 
 }
