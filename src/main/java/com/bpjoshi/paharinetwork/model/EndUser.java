@@ -43,6 +43,8 @@ private String repeatPassword;
 private String userPassword;
 @Column(name="user_role", length=20)
 private String userRole;
+@Column(name="user_enabled")
+private Boolean userEnabled;
 
 public String getUserRole() {
 	return userRole;
@@ -81,6 +83,12 @@ public String getRepeatPassword() {
 }
 public void setRepeatPassword(String repeatPassword) {
 	this.repeatPassword = repeatPassword;
+}
+public Boolean getUserEnabled() {
+	return userEnabled;
+}
+public void setUserEnabled(Boolean userEnabled) {
+	this.userEnabled = userEnabled;
 }
 
 
