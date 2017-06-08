@@ -43,9 +43,14 @@ public class AuthController {
 		if(!result.hasErrors()){
 			endUserService.registerEndUser(endUser);
 			emailService.sendVerificationEmail(endUser.getUserEmail());
-			modelAndView.setViewName("redirect:/");
+			modelAndView.setViewName("redirect:/verifyemail");
 		}
 		return modelAndView;
+    }
+	
+	@RequestMapping("/verifyemail")
+    String verifyEmail() {
+        return "app.verifyEmail";
     }
 
 }
