@@ -20,7 +20,7 @@ import org.springframework.stereotype.Service;
  *
  */
 @Service
-public class EmailService {
+public class MailService {
 	@Autowired
 	private JavaMailSender javaMailSender;
 	@Value("${mail.enable}")
@@ -42,7 +42,12 @@ public class EmailService {
 				mimeMessageHelper.setFrom(new InternetAddress("no-reply@bpjoshi.com"));
 				mimeMessageHelper.setSubject("Vefication of your account");
 				mimeMessageHelper.setSentDate(new Date());
-				mimeMessageHelper.setText("Please click on this link to verify your account");
+				StringBuilder mailMessageBuilder= new StringBuilder();
+				mailMessageBuilder.append("<html>");
+				mailMessageBuilder.append("<h3>Please click on the link below to activate your account.</h3>");
+				mailMessageBuilder.append("<a href='https://www.facebook.com'>Click Me</a>");
+				mailMessageBuilder.append("</html>");
+				mimeMessageHelper.setText(mailMessageBuilder.toString(), true);
 			}
 		};
 		send(mimeMessagePreparator);
