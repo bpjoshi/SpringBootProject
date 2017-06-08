@@ -1,0 +1,10 @@
+<html>
+	<body>
+	<div>
+		<p> Thank you for registering with us. </p>
+	</div>
+	<div>
+		<p> Please click <a href="#"> here </a> to verify your email address.</p>
+	</div>
+	</body>
+</html>
