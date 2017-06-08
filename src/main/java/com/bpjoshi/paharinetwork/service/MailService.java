@@ -33,6 +33,13 @@ public class MailService {
 	}
 	
 	public void sendVerificationEmail(String emailAddress){
+		//Preparing an email message
+		StringBuilder mailMessageBuilder= new StringBuilder();
+		mailMessageBuilder.append("<html>");
+		mailMessageBuilder.append("<h3>Please click on the link below to activate your account.</h3>");
+		mailMessageBuilder.append("<a href='https://www.facebook.com'>Click Me</a>");
+		mailMessageBuilder.append("</html>");
+		
 		MimeMessagePreparator mimeMessagePreparator=new MimeMessagePreparator(){
 
 			@Override
@@ -42,11 +49,7 @@ public class MailService {
 				mimeMessageHelper.setFrom(new InternetAddress("no-reply@bpjoshi.com"));
 				mimeMessageHelper.setSubject("Vefication of your account");
 				mimeMessageHelper.setSentDate(new Date());
-				StringBuilder mailMessageBuilder= new StringBuilder();
-				mailMessageBuilder.append("<html>");
-				mailMessageBuilder.append("<h3>Please click on the link below to activate your account.</h3>");
-				mailMessageBuilder.append("<a href='https://www.facebook.com'>Click Me</a>");
-				mailMessageBuilder.append("</html>");
+				
 				mimeMessageHelper.setText(mailMessageBuilder.toString(), true);
 			}
 		};
