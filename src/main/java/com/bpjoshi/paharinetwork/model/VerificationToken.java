@@ -3,6 +3,7 @@
  */
 package com.bpjoshi.paharinetwork.model;
 
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -14,6 +15,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 
 /**
@@ -36,7 +38,7 @@ public class VerificationToken {
 	private Date expiryDate;
 	@Column(name="token_type")
 	@Enumerated(EnumType.STRING)
-	private ValidationTokenType tokenType;
+	private VerificationTokenType tokenType;
 	
 	/**
 	 * Default Constructor
@@ -50,12 +52,22 @@ public class VerificationToken {
 	 * @param tokenType
 	 */
 	public VerificationToken(String tokenString, EndUser endUser,
-			ValidationTokenType tokenType) {
+			VerificationTokenType tokenType) {
 		this.tokenString = tokenString;
 		this.endUser = endUser;
 		this.tokenType = tokenType;
 	}
 		
+	/**
+	 * Setting expiry date before persisting.
+	 * @return
+	 */
+	@PrePersist
+	private void setExpiryDate(){
+		Calendar cal=Calendar.getInstance();
+		cal.add(Calendar.HOUR, 2);
+		expiryDate=cal.getTime();
+	}
 	
 	public Long getTokenId() {
 		return tokenId;
@@ -81,10 +93,10 @@ public class VerificationToken {
 	public void setExpiryDate(Date expiryDate) {
 		this.expiryDate = expiryDate;
 	}
-	public ValidationTokenType getTokenType() {
+	public VerificationTokenType getTokenType() {
 		return tokenType;
 	}
-	public void setTokenType(ValidationTokenType tokenType) {
+	public void setTokenType(VerificationTokenType tokenType) {
 		this.tokenType = tokenType;
 	}
 }
