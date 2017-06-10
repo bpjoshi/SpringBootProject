@@ -91,7 +91,4 @@ public void setUserEnabled(Boolean userEnabled) {
 	this.userEnabled = userEnabled;
 }
 
-
-
-
 }
