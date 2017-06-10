@@ -41,7 +41,7 @@ public class EndUserService implements UserDetailsService {
 		}
 		List<GrantedAuthority> authorityList=AuthorityUtils.commaSeparatedStringToAuthorityList(endUser.getUserRole());
 		String userPassword=endUser.getUserPassword();
-		return new User(userEmail, userPassword, authorityList);
+		return new User(userEmail, userPassword,endUser.getUserEnabled(), true, true, true, authorityList);
 	}
 
 }
