@@ -11,9 +11,7 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.bpjoshi.paharinetwork.validations.PasswordMatcher;
 
@@ -44,7 +42,7 @@ private String userPassword;
 @Column(name="user_role", length=20)
 private String userRole;
 @Column(name="user_enabled")
-private Boolean userEnabled;
+private boolean userEnabled;
 
 public String getUserRole() {
 	return userRole;
