@@ -13,5 +13,5 @@ import com.bpjoshi.paharinetwork.model.VerificationToken;
  */
 @Repository
 public interface VerificationTokenDao extends CrudRepository<VerificationToken, Long> {
-	VerificationToken findByTokenString(String tokenString);
+	VerificationToken findByTokenString(String token);
 }

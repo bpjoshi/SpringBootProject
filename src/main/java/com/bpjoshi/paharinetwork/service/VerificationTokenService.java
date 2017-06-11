@@ -32,5 +32,4 @@ public class VerificationTokenService {
 	public VerificationToken getVerificationToken(String tokenString){
 		return verificationTokenDao.findByTokenString(tokenString);
 	}
-
 }

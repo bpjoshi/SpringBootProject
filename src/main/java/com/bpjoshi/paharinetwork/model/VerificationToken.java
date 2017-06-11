@@ -17,6 +17,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  * @author Bhagwati Prasad(bpjoshi)
@@ -35,6 +37,7 @@ public class VerificationToken {
 	@OneToOne(targetEntity=EndUser.class)
 	private EndUser endUser;
 	@Column(name="expiry_date")
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date expiryDate;
 	@Column(name="token_type")
 	@Enumerated(EnumType.STRING)
