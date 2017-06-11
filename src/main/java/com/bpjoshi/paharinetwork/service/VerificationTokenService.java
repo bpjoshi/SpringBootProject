@@ -32,4 +32,12 @@ public class VerificationTokenService {
 	public VerificationToken getVerificationToken(String tokenString){
 		return verificationTokenDao.findByTokenString(tokenString);
 	}
+
+	/**
+	 * @param verificationToken
+	 */
+	public void delete(VerificationToken verificationToken) {
+		verificationTokenDao.delete(verificationToken);
+		
+	}
 }

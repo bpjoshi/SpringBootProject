@@ -75,21 +75,25 @@ public class AuthController {
 		VerificationToken verificationToken=verificationTokenService.getVerificationToken(vToken);
 		//Check if the token doesn't exist in database
 		if(verificationToken==null){
+			verificationTokenService.delete(verificationToken);
 			modelAndView.setViewName("redirect:/invaliduser");
 			return modelAndView;
 		}
 		//Check if the token is expired
 		if(verificationToken.getExpiryDate().before(new Date())){
+			verificationTokenService.delete(verificationToken);
 			modelAndView.setViewName("redirect:/expiredlink");
 			return modelAndView;
 		}
 		//Check if a user exist for this token
 		if(verificationToken.getEndUser()==null){
+			verificationTokenService.delete(verificationToken);
 			modelAndView.setViewName("redirect:/invaliduser");
 			return modelAndView;
 		}
 		verificationToken.getEndUser().setUserEnabled(true);
 		endUserService.save(verificationToken.getEndUser());
+		verificationTokenService.delete(verificationToken);
 		modelAndView.getModel().put("message", tokenRegConfirmed);
 		modelAndView.setViewName("app.message");
 		return modelAndView;
