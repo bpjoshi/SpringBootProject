@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.mail.javamail.MimeMessagePreparator;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.velocity.VelocityEngineUtils;
 
@@ -38,7 +39,15 @@ public class MailService {
 			javaMailSender.send(mimeMessagePreparator);
 		}
 	}
-	
+	/**
+	 * @param emailAddress
+	 * @param verificationToken
+	 * Method sends a verification token to the user
+	 * Method is marked Async because contacting to email server might take time and 
+	 * we would like other things to run during this time.
+	 * This can be tested if we put Thread.sleep(10000) ..The mail will be sent after 10 seconds
+	 */
+	@Async 
 	public void sendVerificationEmail(String emailAddress, String verificationToken){
 		//Making a velocity template content
 		HashMap<String, Object> model=new HashMap<>();
