@@ -31,16 +31,19 @@ public class MailService {
 	private Boolean isMailEnabled;
 	@Autowired
 	private VelocityEngine velocityEngine;
+	@Value("${website.url}")
+	private String websiteUrl;
 	private void send(MimeMessagePreparator mimeMessagePreparator){
 		if(isMailEnabled){
 			javaMailSender.send(mimeMessagePreparator);
 		}
 	}
 	
-	public void sendVerificationEmail(String emailAddress){
+	public void sendVerificationEmail(String emailAddress, String verificationToken){
 		//Making a velocity template content
 		HashMap<String, Object> model=new HashMap<>();
-		model.put("testData", "This is dynamic test data");
+		model.put("verificationToken", verificationToken);
+		model.put("websiteUrl", websiteUrl);
 		//Deprecated Utils class need to be replaced though.
 		String mailContent=VelocityEngineUtils.mergeTemplateIntoString
 				(velocityEngine, "/com/bpjoshi/paharinetwork/velocitytemplates/verifyemail.vm", "UTF-8", model);

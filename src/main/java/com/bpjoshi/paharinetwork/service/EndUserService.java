@@ -25,8 +25,6 @@ public class EndUserService implements UserDetailsService {
 	private EndUserDao endUserDao;
 	@Autowired
 	private PasswordEncoder passwordEncoder;
-	@Autowired
-	private VerificationTokenService verficationTokenService;
 	//Register a new end user in database
 	public void registerEndUser(EndUser endUser){
 		
@@ -44,6 +42,10 @@ public class EndUserService implements UserDetailsService {
 		List<GrantedAuthority> authorityList=AuthorityUtils.commaSeparatedStringToAuthorityList(endUser.getUserRole());
 		String userPassword=endUser.getUserPassword();
 		return new User(userEmail, userPassword,endUser.getUserEnabled(), true, true, true, authorityList);
+	}
+	
+	public void save(EndUser endUser){
+		endUserDao.save(endUser);
 	}
 
 }
