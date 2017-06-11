@@ -6,7 +6,7 @@
 	</div>
 	<div>
 		<p> Please copy the link below
-		 <a href="${website.url}/regconfirmed?t=${verificationToken}d" target="_blank"> here </a> to verify your email adress.</p>
+		 <a href="${websiteUrl}/regconfirmed?t=${verificationToken}" target="_blank"> here </a> to verify your email address.</p>
 	</div>
 	</body>
 </html>
