@@ -5,10 +5,8 @@
 		<p> Thank you for registering with us. </p>
 	</div>
 	<div>
-		<p>Test data: ${testData}</p>
-	</div>
-	<div>
-		<p> Please click <a href="#"> here </a> to verify your email address.</p>
+		<p> Please copy the link below
+		 <a href="${website.url}/regconfirmed?t=${verificationToken}d" target="_blank"> here </a> to verify your email adress.</p>
 	</div>
 	</body>
 </html>
