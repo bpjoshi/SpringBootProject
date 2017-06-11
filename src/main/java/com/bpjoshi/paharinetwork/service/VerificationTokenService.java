@@ -6,6 +6,7 @@ package com.bpjoshi.paharinetwork.service;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.bpjoshi.paharinetwork.dao.VerificationTokenDao;
 import com.bpjoshi.paharinetwork.model.EndUser;
@@ -16,6 +17,7 @@ import com.bpjoshi.paharinetwork.model.VerificationTokenType;
  * @author Bhagwati Prasad(bpjoshi)
  *
  */
+@Service
 public class VerificationTokenService {
 	@Autowired
 	private VerificationTokenDao verificationTokenDao;

@@ -25,6 +25,8 @@ public class EndUserService implements UserDetailsService {
 	private EndUserDao endUserDao;
 	@Autowired
 	private PasswordEncoder passwordEncoder;
+	@Autowired
+	private VerificationTokenService verficationTokenService;
 	//Register a new end user in database
 	public void registerEndUser(EndUser endUser){
 		
