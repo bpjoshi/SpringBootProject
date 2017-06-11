@@ -29,7 +29,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		//http.authorizeRequests().antMatchers("/").permitAll().anyRequest().authenticated();
 		//Allow css etc at home page
 		http.authorizeRequests().antMatchers("/", "/about", "/register", 
-				"/verifyemail", "/registrationconfirmed", "/expiredlink", 
+				"/verifyemail", "/regconfirmed", "/expiredlink", 
 				"/invaliduser").permitAll().antMatchers("/js/*", "/css/*", "/img/*")
 		.permitAll().antMatchers("/viewstatus", "/addstatus", "/deletestatus", 
 				"/editstatus").hasRole("ADMIN").and().formLogin().loginPage("/login")
