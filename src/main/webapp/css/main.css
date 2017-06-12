@@ -72,3 +72,7 @@ textarea{
 	margin-bottom: 10px;
 	font-weight: bold;
 }
+.message{
+	font-size: larger;
+	margin-top: 60px;
+}
