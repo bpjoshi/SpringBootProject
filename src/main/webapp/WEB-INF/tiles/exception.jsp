@@ -4,8 +4,8 @@
 <div class="row">
 	<div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 text-center">
 		<div class="message">
-			<c:out value="${message}" /> <br/>while trying to access 
-			<c:out value="${url}" /> <br/>
+			<c:out value="${message}" /> <br/><br/>
+			<!-- <c:out value="${exceptionMessage}" />  --> 
 			
 		</div>
 	</div>
