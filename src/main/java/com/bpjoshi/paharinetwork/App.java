@@ -57,18 +57,4 @@ public class App extends SpringBootServletInitializer{
 	PasswordEncoder getPasswordEncoder(){
 		return new BCryptPasswordEncoder();
 	}
-	/*
-	 * Method to handle errors
-	 */
-	@Bean
-	EmbeddedServletContainerCustomizer errorHandler() {
-		return new EmbeddedServletContainerCustomizer() {
-
-			@Override
-			public void customize(ConfigurableEmbeddedServletContainer container) {
-				container.addErrorPages(new ErrorPage(HttpStatus.FORBIDDEN, "/forbidden"));
-			}
-			
-		};
-	}
 }
