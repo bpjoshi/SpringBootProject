@@ -48,4 +48,12 @@ public class EndUserService implements UserDetailsService {
 		endUserDao.save(endUser);
 	}
 
+	/**
+	 * @param email
+	 * @return
+	 */
+	public EndUser getEndUser(String userEmail) {
+		return endUserDao.findByUserEmail(userEmail);
+	}
+
 }
