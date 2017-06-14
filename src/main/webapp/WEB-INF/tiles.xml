@@ -42,4 +42,7 @@
   <definition name="app.profilePage" extends="app.default">
     <put-attribute name="content" value="/WEB-INF/tiles/profile.jsp" />
   </definition>
+  <definition name="app.editProfileAboutText" extends="app.default">
+    <put-attribute name="content" value="/WEB-INF/tiles/editprofile.jsp" />
+  </definition>
 </tiles-definitions>
