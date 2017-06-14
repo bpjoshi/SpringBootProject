@@ -39,4 +39,7 @@
   <definition name="app.errorPage" extends="app.default">
     <put-attribute name="content" value="/WEB-INF/tiles/error.jsp" />
   </definition>
+  <definition name="app.profilePage" extends="app.default">
+    <put-attribute name="content" value="/WEB-INF/tiles/profile.jsp" />
+  </definition>
 </tiles-definitions>

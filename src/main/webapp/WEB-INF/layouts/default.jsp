@@ -54,6 +54,7 @@
             </sec:authorize>
             <sec:authorize access="isAuthenticated()">
             <%-- jquery call to logout form defined --%>
+            <li><a href="${contextRoot}/profile">Profile</a></li>
             <li><a href="javascript:$('#logoutForm').submit();">Logout</a></li>
             </sec:authorize>
             <sec:authorize access="!isAuthenticated()">

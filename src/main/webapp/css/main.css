@@ -76,3 +76,22 @@ textarea{
 	font-size: larger;
 	margin-top: 60px;
 }
+.profile-main{
+	widht:100px;
+	border: 1px solid gray;
+	padding: 50px;
+	overflow: auto;
+}
+.profile-about-text{
+	font-size:larger;
+}
+.profile-image{
+	float:left;
+	margin-bottom:10px;
+	margin-top:10px;
+}
+.profile-about-edit{
+	position:absolute;
+	bottom:0px;
+	right:50px;
+}
