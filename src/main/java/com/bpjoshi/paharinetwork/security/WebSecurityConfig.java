@@ -32,7 +32,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 				"/verifyemail", "/regconfirmed", "/expiredlink", 
 				"/invaliduser").permitAll().antMatchers("/js/*", "/css/*", "/img/*")
 		.permitAll().antMatchers("/viewstatus", "/addstatus", "/deletestatus", 
-				"/editstatus").hasRole("ADMIN").anyRequest().denyAll()
+				"/editstatus").hasRole("ADMIN").antMatchers("/profile").authenticated().
+				anyRequest().denyAll()
 				.and().formLogin().loginPage("/login")
 		.defaultSuccessUrl("/").permitAll();
 		//@formatter:on
