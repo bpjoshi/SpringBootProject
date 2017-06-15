@@ -15,7 +15,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.bpjoshi.paharinetwork.dao.EndUserDao;
 import com.bpjoshi.paharinetwork.model.EndUser;
 import com.bpjoshi.paharinetwork.service.EndUserService;
 /**
