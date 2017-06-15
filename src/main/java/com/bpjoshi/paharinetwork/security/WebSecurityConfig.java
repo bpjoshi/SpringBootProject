@@ -32,7 +32,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 				"/verifyemail", "/regconfirmed", "/expiredlink", 
 				"/invaliduser").permitAll().antMatchers("/js/*", "/css/*", "/img/*")
 		.permitAll().antMatchers("/viewstatus", "/addstatus", "/deletestatus", 
-				"/editstatus").hasRole("ADMIN").antMatchers("/profile", "/editprofileabout").authenticated().
+				"/editstatus").hasRole("ADMIN").antMatchers("/profile", "/editprofileabout", "/uploadprofilepic").authenticated().
 				anyRequest().denyAll()
 				.and().formLogin().loginPage("/login")
 		.defaultSuccessUrl("/").permitAll();
