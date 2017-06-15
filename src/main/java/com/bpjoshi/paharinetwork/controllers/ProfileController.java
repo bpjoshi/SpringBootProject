@@ -3,16 +3,24 @@
  */
 package com.bpjoshi.paharinetwork.controllers;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import javax.validation.Valid;
 
 import org.owasp.html.PolicyFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bpjoshi.paharinetwork.model.EndUser;
@@ -31,7 +39,9 @@ public class ProfileController {
 	@Autowired
 	private EndUserService endUserService;
 	@Autowired
-	PolicyFactory htmlPolicy;
+	private PolicyFactory htmlPolicy;
+	@Value("{media.upload.directory}")
+	private String mediaUploadDirectory;
 	@RequestMapping(value="/profile")
 	public ModelAndView showProfile(ModelAndView modelAndView){
 		//Add safe copy to publicly visible profile
@@ -83,4 +93,17 @@ public class ProfileController {
 		publicProfile.safeProfileCopy(profile);
 		return publicProfile;
 	}
+	@RequestMapping(value="/uploadprofilepic", method=RequestMethod.POST)
+	public ModelAndView profilePictureUpload(ModelAndView modelAndView, @RequestParam("profilePic") MultipartFile profilePic){
+		Path fileOutputPath=Paths.get(mediaUploadDirectory, profilePic.getOriginalFilename());
+		try {
+			Files.deleteIfExists(fileOutputPath);
+			Files.copy(profilePic.getInputStream(), fileOutputPath);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		modelAndView.setViewName("redirect:/profile");
+		return modelAndView;
+	}
+	
 }
