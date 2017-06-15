@@ -38,5 +38,5 @@ public class ExceptionHandler {
 		modelAndView.setViewName("app.exceptionPage");
 		return modelAndView;
 	}
-
+	
 }
