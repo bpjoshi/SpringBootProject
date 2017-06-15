@@ -44,7 +44,7 @@ public class EndUserService implements UserDetailsService {
 		return new User(userEmail, userPassword,endUser.getUserEnabled(), true, true, true, authorityList);
 	}
 	
-	public void save(EndUser endUser){
+	public void saveEndUser(EndUser endUser){
 		endUserDao.save(endUser);
 	}
 

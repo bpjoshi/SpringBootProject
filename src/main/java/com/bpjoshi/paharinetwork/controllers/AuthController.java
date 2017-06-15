@@ -92,7 +92,7 @@ public class AuthController {
 			return modelAndView;
 		}
 		verificationToken.getEndUser().setUserEnabled(true);
-		endUserService.save(verificationToken.getEndUser());
+		endUserService.saveEndUser(verificationToken.getEndUser());
 		verificationTokenService.delete(verificationToken);
 		modelAndView.getModel().put("message", tokenRegConfirmed);
 		modelAndView.setViewName("app.message");
