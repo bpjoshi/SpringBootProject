@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.multipart.MultipartException;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -37,6 +38,11 @@ public class ExceptionHandler {
 		modelAndView.getModel().put("exceptionMessage", exception);
 		modelAndView.setViewName("app.exceptionPage");
 		return modelAndView;
+	}
+	@org.springframework.web.bind.annotation.ExceptionHandler(MultipartException.class)
+	public String mediaUploadException(Exception e){
+		e.printStackTrace();
+		return "Error upload media files";
 	}
 	
 }
