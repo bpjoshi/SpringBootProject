@@ -21,4 +21,13 @@ public class MediaService {
 		}
 		return fileName.substring(positionOfDot+1);
 	}
+	
+	private boolean isAnImageExtension(String extensionName){
+		for(String validExtension:validImageExtensions.split(",")){
+			if(extensionName.equalsIgnoreCase(validExtension)){
+				return true;
+			}
+		}
+		return false;
+	}
 }
