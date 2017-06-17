@@ -1,12 +1,16 @@
 package com.bpjoshi.paharinetwork.service;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
+import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -19,6 +23,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class MediaServiceTest {
 	@Autowired
 	private MediaService mediaService;
+	@Value("${media.upload.directory}")
+	private String MediaUploadDirectory;
 	/*
 	 * Test method to get extension
 	 */
@@ -49,6 +55,19 @@ public class MediaServiceTest {
 		method.setAccessible(true);
 		//assertTrue("Should fail", (Boolean)method.invoke(mediaService, "myPhot"));
 		assertTrue("Should pass", (Boolean)method.invoke(mediaService, "mp4"));
+	}
+	/*
+	 * Test method for method selectMediaDirectory() to check if the directories are
+	 * being created
+	 */
+	@Test
+	public void selectMediaDirectoryTest() throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException{
+		Method method=MediaService.class.getDeclaredMethod("selectMediaDirectory", String.class, String.class);
+		method.setAccessible(true);
+		for(int i=0; i<50; i++){
+			File fileCreated=(File)method.invoke(mediaService,MediaUploadDirectory, "images" );
+			assertTrue("Directory should exist "+fileCreated.getAbsolutePath(), fileCreated.exists());
+		}
 	}
 	
 }
