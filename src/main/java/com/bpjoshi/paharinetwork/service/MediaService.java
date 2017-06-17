@@ -30,4 +30,13 @@ public class MediaService {
 		}
 		return false;
 	}
+	
+	private boolean isAVideoExtension(String extensionName){
+		for(String validExtension:validVideoExtensions.split(",")){
+			if(extensionName.equalsIgnoreCase(validExtension)){
+				return true;
+			}
+		}
+		return false;
+	}
 }
